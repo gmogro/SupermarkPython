@@ -42,5 +42,6 @@ class DataBase:
 # Path: Sql\main.py
 if __name__ == '__main__':
     db = DataBase("supermark.db")
-    db.create_table("users", "id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, password TEXT")
-    
+    #db.create_table("users", "id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, password TEXT")
+    db.insert("users", "username, password", "'admin', '123'")
+    db.close()
