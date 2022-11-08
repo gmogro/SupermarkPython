@@ -30,6 +30,10 @@ class DataBase:
         self.cursor.execute(f"DELETE FROM {table_name} WHERE {condition}")
         self.connection.commit()
     
+    def delete_table(self, table_name):
+        self.cursor.execute(f"DROP TABLE {table_name}")
+        self.connection.commit()
+    
     def close(self):
         self.connection.close()
     
@@ -42,6 +46,18 @@ class DataBase:
 # Path: Sql\main.py
 if __name__ == '__main__':
     db = DataBase("supermark.db")
-    #db.create_table("users", "id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, password TEXT")
-    db.insert("users", "username, password", "'admin', '123'")
+    db.create_table("users", 
+                    "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                    "nombre TEXT,"+
+                    "apellido TEXT,"+
+                    "edad INTEGER,"+
+                    "username TEXT,"+ 
+                    "password TEXT,"+
+                    "estado INTEGER"
+                   )
+    #db.insert("users", "username, password", "'admin', '123'")
+    #print(db.select_all("users", "*"))
+    #print(db.select_all("users", "id, username"))
+    #db.delete_table("users")
     db.close()
+

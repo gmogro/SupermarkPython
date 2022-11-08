@@ -78,6 +78,7 @@ class Usuario:
     def login(self):
         self.__email = input("Ingrese el email del usuario: ")
         self.__password = input("Ingrese el password del usuario: ")
+        
 
     def logout(self):
         self.__email = ""
