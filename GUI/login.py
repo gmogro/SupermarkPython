@@ -7,7 +7,7 @@ class LoginVentana(tk.Tk):
         # ventana principal
         self.geometry('300x130')
         self.title('Login')
-        self.iconbitmap('image/icons/tienda.ico')
+        self.iconbitmap('GUI/image/icons/tienda.ico')
         self.resizable(0,0)
         # configuración del grid
         self.columnconfigure(0, weight=1)
