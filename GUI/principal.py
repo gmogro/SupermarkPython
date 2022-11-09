@@ -8,17 +8,20 @@ class Main(tk.Tk):
         self.title("Menu Principal")
         self.geometry("1080x900")
         self.iconbitmap('GUI/image/icons/tienda.ico')
+        self.photo = None
         #self.resizable(False, False)
         self.columnconfigure(0, weight = 3)
         self.columnconfigure(1, weight = 3)
         self.columnconfigure(2, weight = 3)
         self.columnconfigure(3, weight = 3)
         self.columnconfigure(4, weight = 3)
-        self._crear_menu()
-        self._crear_botones_action()
+        self._create_menu()
+        self._create_boton_action()
+        self._list_client()
+        self._list_sale()
 
     # Crear el menu   
-    def _crear_menu(self):
+    def _create_menu(self):
         self.menu = tk.Menu(self)
         self.config(menu=self.menu)
         # Crear el menu de opciones
@@ -35,16 +38,16 @@ class Main(tk.Tk):
         ayuda_menu.add_command(label='Acerca de')
 
     
-    def _crear_botones_action(self):
-        photo = tk.PhotoImage(file = r"GUI/image/img/arduino.png")
-        photo1 = tk.PhotoImage(file = r"GUI/image/img/info.png")
-        photo2 = tk.PhotoImage(file = r"GUI/image/img/pdf.png")
+    def _create_boton_action(self):
+        self.photo = tk.PhotoImage(file = r"GUI/image/img/cliente.png")
+        self.photo1 = tk.PhotoImage(file = r"GUI/image/img/producto.png")
+        self.photo2 = tk.PhotoImage(file = r"GUI/image/img/venta.png")
 
-        btnInfo = tk.Button(self, image = photo, width = 50, height = 50)
-        btnInfo1 = tk.Button(self,  image = photo1, width=50, height=50)
-        btnInfo2 = tk.Button(self, image = photo2, width=50, height=50)
-        btnInfo3 = tk.Button(self, image = photo, width = 50, height = 50)
-        btnInfo4 = tk.Button(self, image = photo, width = 50, height = 50)
+        btnInfo = tk.Button(self, image = self.photo, width = 50, height = 50)
+        btnInfo1 = tk.Button(self,  image = self.photo1, width=50, height=50)
+        btnInfo2 = tk.Button(self, image =  self.photo2, width=50, height=50)
+        btnInfo3 = tk.Button(self, image = self.photo, width = 50, height = 50)
+        btnInfo4 = tk.Button(self, image = self.photo, width = 50, height = 50)
 
         btnInfo.grid(row = 1, column = 0, sticky="NWE")
         btnInfo1.grid(row = 1, column = 1, sticky="NWE")
@@ -52,6 +55,33 @@ class Main(tk.Tk):
         btnInfo3.grid(row = 1, column = 3, sticky="NWE")
         btnInfo4.grid(row = 1, column = 4, sticky="NWE")
 
+
+    def _list_client(self):
+        rows = []
+        for i in range(2,5):
+            cols = []
+            for j in range(0,5):
+                e = tk.Entry(relief = tk.GROOVE)
+                e.grid(row=i, column=j, sticky = tk.NSEW)
+                e.insert(tk.END, '%d.%d' % (i, j))
+                cols.append(e)
+            rows.append(cols)
+    
+    def _list_sale(self):
+        tree = ttk.Treeview(self, column=("c1", "c2", "c3"), show='headings')
+        tree.column("#1", anchor=tk.CENTER)
+        tree.heading("#1", text="ID")
+        tree.column("#2", anchor=tk.CENTER)
+        tree.heading("#2", text="Nombre")
+        tree.column("#3", anchor=tk.CENTER)
+        tree.heading("#3", text="Fecha")
+        tree.grid(row = 2, column = 0, sticky="SWE",columnspan=5)
+        button1 = tk.Button(text="Display data")
+        button1.grid(row = 2, column = 0, sticky="S")
+
+    def _list_producto(self):
+        pass
+        
 if __name__ == '__main__':
     app = Main()
     app.mainloop()
