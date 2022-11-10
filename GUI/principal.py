@@ -19,6 +19,7 @@ class Main(tk.Tk):
         self._create_boton_action()
         self._list_client()
         self._list_sale()
+        self._list_producto()
 
     # Crear el menu   
     def _create_menu(self):
@@ -42,12 +43,14 @@ class Main(tk.Tk):
         self.photo = tk.PhotoImage(file = r"GUI/image/img/cliente.png")
         self.photo1 = tk.PhotoImage(file = r"GUI/image/img/producto.png")
         self.photo2 = tk.PhotoImage(file = r"GUI/image/img/venta.png")
+        self.photo4 = tk.PhotoImage(file = r"GUI/image/img/pdf.png")
+        self.photo5 = tk.PhotoImage(file = r"GUI/image/img/info.png")
 
         btnInfo = tk.Button(self, image = self.photo, width = 50, height = 50)
         btnInfo1 = tk.Button(self,  image = self.photo1, width=50, height=50)
         btnInfo2 = tk.Button(self, image =  self.photo2, width=50, height=50)
-        btnInfo3 = tk.Button(self, image = self.photo, width = 50, height = 50)
-        btnInfo4 = tk.Button(self, image = self.photo, width = 50, height = 50)
+        btnInfo3 = tk.Button(self, image = self.photo4, width = 50, height = 50)
+        btnInfo4 = tk.Button(self, image = self.photo5, width = 50, height = 50)
 
         btnInfo.grid(row = 1, column = 0, sticky="NWE")
         btnInfo1.grid(row = 1, column = 1, sticky="NWE")
@@ -57,6 +60,20 @@ class Main(tk.Tk):
 
 
     def _list_client(self):
+        tree = ttk.Treeview(self, column=("c1", "c2", "c3","c4"), show='headings')
+        tree.column("#1", anchor=tk.CENTER)
+        tree.heading("#1", text="Nro")
+        tree.column("#2", anchor=tk.CENTER)
+        tree.heading("#2", text="Apellido")
+        tree.column("#3", anchor=tk.CENTER)
+        tree.heading("#3", text="Nombre")
+        tree.column("#4", anchor=tk.CENTER)
+        tree.heading("#4", text="Documento")
+        tree.column("#4", anchor=tk.CENTER)
+        tree.heading("#4", text="Domicilio")
+        tree.grid(row = 2, column = 0, sticky="SWE",columnspan=5,padx = 10, pady = 10)
+
+    """ def _list_client(self):
         rows = []
         for i in range(2,5):
             cols = []
@@ -65,22 +82,32 @@ class Main(tk.Tk):
                 e.grid(row=i, column=j, sticky = tk.NSEW)
                 e.insert(tk.END, '%d.%d' % (i, j))
                 cols.append(e)
-            rows.append(cols)
+            rows.append(cols) """
     
     def _list_sale(self):
-        tree = ttk.Treeview(self, column=("c1", "c2", "c3"), show='headings')
+        tree = ttk.Treeview(self, column=("c1", "c2", "c3","c4"), show='headings')
         tree.column("#1", anchor=tk.CENTER)
-        tree.heading("#1", text="ID")
+        tree.heading("#1", text="Nro")
+        tree.column("#2", anchor=tk.CENTER)
+        tree.heading("#2", text="Cliente")
+        tree.column("#3", anchor=tk.CENTER)
+        tree.heading("#3", text="Fecha")
+        tree.column("#4", anchor=tk.CENTER)
+        tree.heading("#4", text="Total")
+        tree.grid(row = 2, column = 0, sticky="SWE",columnspan=5,padx = 10, pady = 10)
+        
+
+    def _list_producto(self):
+        tree = ttk.Treeview(self, column=("c1", "c2", "c3","c4"), show='headings')
+        tree.column("#1", anchor=tk.CENTER)
+        tree.heading("#1", text="Nro")
         tree.column("#2", anchor=tk.CENTER)
         tree.heading("#2", text="Nombre")
         tree.column("#3", anchor=tk.CENTER)
-        tree.heading("#3", text="Fecha")
-        tree.grid(row = 2, column = 0, sticky="SWE",columnspan=5,padx=6, pady=25)
-        button1 = tk.Button(text="Display data")
-        button1.grid(row = 2, column = 0, sticky="S")
-
-    def _list_producto(self):
-        pass
+        tree.heading("#3", text="Stock")
+        tree.column("#4", anchor=tk.CENTER)
+        tree.heading("#4", text="Precio")
+        tree.grid(row = 2, column = 0, sticky="SWE",columnspan=5,padx = 10, pady = 10)
         
 if __name__ == '__main__':
     app = Main()
