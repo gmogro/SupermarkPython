@@ -75,7 +75,7 @@ class Main(tk.Tk):
         tree.heading("#2", text="Nombre")
         tree.column("#3", anchor=tk.CENTER)
         tree.heading("#3", text="Fecha")
-        tree.grid(row = 2, column = 0, sticky="SWE",columnspan=5)
+        tree.grid(row = 2, column = 0, sticky="SWE",columnspan=5,padx=6, pady=25)
         button1 = tk.Button(text="Display data")
         button1.grid(row = 2, column = 0, sticky="S")
 
