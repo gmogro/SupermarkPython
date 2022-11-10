@@ -17,9 +17,6 @@ class Main(tk.Tk):
         self.columnconfigure(4, weight = 3)
         self._create_menu()
         self._create_boton_action()
-        self._list_client()
-        self._list_sale()
-        self._list_producto()
 
     # Crear el menu   
     def _create_menu(self):
@@ -46,9 +43,9 @@ class Main(tk.Tk):
         self.photo4 = tk.PhotoImage(file = r"GUI/image/img/pdf.png")
         self.photo5 = tk.PhotoImage(file = r"GUI/image/img/info.png")
 
-        btnInfo = tk.Button(self, image = self.photo, width = 50, height = 50)
-        btnInfo1 = tk.Button(self,  image = self.photo1, width=50, height=50)
-        btnInfo2 = tk.Button(self, image =  self.photo2, width=50, height=50)
+        btnInfo = tk.Button(self, image = self.photo, width = 50, height = 50, command = self._list_client)
+        btnInfo1 = tk.Button(self,  image = self.photo1, width=50, height=50,  command = self._list_producto)
+        btnInfo2 = tk.Button(self, image =  self.photo2, width=50, height=50,  command = self._list_sale)
         btnInfo3 = tk.Button(self, image = self.photo4, width = 50, height = 50)
         btnInfo4 = tk.Button(self, image = self.photo5, width = 50, height = 50)
 
